@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Holiday Planner</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>🌍 Holiday Planner</h1>
+</header>
+
+<div class="container my-4">
+  <div class="hero">
+    <h2>Plan Your Dream Vacation ✈️</h2>
+    <p>Explore destinations, create your itinerary, and manage your budget with ease.</p>
+    <button class="btn-cta" onclick="scrollToDestinations()">Get Started</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="filterByTab('Goa')">🏖️ Goa</div>
+    <div class="tab" onclick="filterByTab('Manali')">⛰️ Manali</div>
+    <div class="tab" onclick="filterByTab('Paris')">🇫🇷 Paris</div>
+    <div class="tab" onclick="filterByTab('Kerala')">🌿 Kerala</div>
+    <div class="tab" onclick="filterByTab('New York')">🗽 New York</div>
+    <div class="tab" onclick="filterByTab('Maldives')">🌊 Maldives</div>
+  </div>
+
+  <!-- Filters -->
+  <div class="row mb-4">
+    <div class="col-md-12 d-flex justify-content-end">
+      <div class="filters">
+        <h5>Filters</h5>
+        <select id="typeFilter" onchange="applyFilters()">
+          <option value="">All Types</option>
+          <option value="beach">Beach</option>
+          <option value="mountain">Mountain</option>
+          <option value="city">City</option>
+          <option value="nature">Nature</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="row">
+    <!-- Left Sidebar -->
+    <div class="col-md-4">
+      <div class="sticky-panel">
+        <div class="card p-3 mb-4">
+          <h4>📝 Your Itinerary</h4>
+          <ul id="itinerary" class="list-group"></ul>
+        </div>
+        <div class="card p-3">
+          <h4>💰 Budget</h4>
+          <p>Total: $<span id="budget">0</span></p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success btn-sm" onclick="exportPlan()">Export</button>
+            <button class="btn btn-danger btn-sm" onclick="resetPlan()">Clear</button>
+          </div>
+          <div id="currencyConverter" class="mt-4">
+            <h5>💱 Currency Converter</h5>
+            <select id="currencySelector" class="form-select" onchange="convertCurrency()">
+              <option value="1">USD (Default)</option>
+              <option value="0.85">EUR (Euro)</option>
+              <option value="74.5">INR (Indian Rupee)</option>
+              <option value="0.75">GBP (British Pound)</option>
+              <option value="1.35">AUD (Australian Dollar)</option>
+            </select>
+            <p class="mt-2">Converted Total: <span id="convertedTotal">0</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div class="col-md-8">
+      <div id="destinations" class="row g-4"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
